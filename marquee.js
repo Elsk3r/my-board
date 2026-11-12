@@ -28,7 +28,7 @@ async function startBoard() {
   setInterval(getMessage, 30000);   // re-reads your message every 30 seconds
   setInterval(scrollOneStep, SPEED);
 }
-
+if (text) message = "TESTING ALTSPACE MARQUEE 123 ***   ";
 async function getMessage() {
   try {
     const reply = await fetch(MESSAGE_URL + "?t=" + Date.now());
