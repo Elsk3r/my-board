@@ -14,22 +14,32 @@ let message  = "Loading" + SEPARATOR;
 let position = 0;
 let board;
 
-async function startBoard() {
-  const obj = await new BS.GameObject("MarqueeText").Async();
+window.addEventListener("bs-loaded", () => {
+  const scene = BS.BanterScene.GetInstance();
 
-  const move = await obj.AddComponent(new BS.Transform());
-  move.localPosition = new BS.Vector3(BOARD_X, BOARD_Y, BOARD_Z);
-  move.localEulerAngles = new BS.Vector3(0, TURN_AROUND, 0);
+  scene.On("unity-loaded", () => {
+    const obj = new BS.GameObject({
+      name: "MarqueeText",
+      localPosition: new BS.Vector3(BOARD_X, BOARD_Y, BOARD_Z),
+      localEulerAngles: new BS.Vector3(0, TURN_AROUND, 0)
+    });
 
-  board = await obj.AddComponent(new BS.BanterText(
-    "", new BS.Vector4(1, 0.84, 0.3, 1), "Center", "Middle",
-    TEXT_SIZE, true, false, new BS.Vector2(7.5, 0.3)
-  ));
+    board = obj.AddComponent(new BS.BanterText({
+      text: "Loading",
+      color: new BS.Vector4(1, 0.84, 0.3, 1),
+      fontSize: TEXT_SIZE,
+      horizontalAlignment: BS.HorizontalAlignment.Center,
+      verticalAlignment: BS.VerticalAlignment.Middle,
+      richText: false,
+      enableWordWrapping: false,
+      rectTransformSizeDelta: new BS.Vector2(7.5, 1)
+    }));
 
-  getMessage();
-  setInterval(getMessage, 30000);
-  setInterval(scrollOneStep, SPEED);
-}
+    getMessage();
+    setInterval(getMessage, 30000);
+    setInterval(scrollOneStep, SPEED);
+  });
+});
 
 async function getMessage() {
   try {
@@ -46,5 +56,3 @@ function scrollOneStep() {
   board.text = longText.substr(position, LETTERS_SHOWN);
   position = (position + 1) % message.length;
 }
-
-scene.On("unity-loaded", startBoard);
