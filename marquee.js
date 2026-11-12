@@ -7,8 +7,10 @@ const BOARD_X       = 1.203;    // where the scrolling text sits in your world
 const BOARD_Y       = 1.785;
 const BOARD_Z       = 2.84;
 const TURN_AROUND   = 270;    // use 180 if the text faces the wrong way
+const SEPARATOR     = "        ";
 // ===== DO NOT CHANGE ANYTHING BELOW THIS LINE =====
-let message  = "Loading...   ***   ";
+const scene = BS.BanterScene.GetInstance();
+let message  = "Loading" + SEPARATOR;
 let position = 0;
 let board;
 
@@ -25,23 +27,24 @@ async function startBoard() {
   ));
 
   getMessage();
-  setInterval(getMessage, 30000);   // re-reads your message every 30 seconds
+  setInterval(getMessage, 30000);
   setInterval(scrollOneStep, SPEED);
 }
-// if (text) message = "TESTING ALTSPACE MARQUEE 123 ***   ";
+
 async function getMessage() {
   try {
     const reply = await fetch(MESSAGE_URL + "?t=" + Date.now());
     const text = (await reply.text()).replace(/\s+/g, " ").trim();
-    if (text) message = text + "   ***   ";
+    if (text) message = text + SEPARATOR;
   } catch (e) { }
 }
 
 function scrollOneStep() {
+  if (!board) return;
   const copies = Math.ceil(LETTERS_SHOWN * 2 / message.length) + 2;
   const longText = message.repeat(copies);
   board.text = longText.substr(position, LETTERS_SHOWN);
   position = (position + 1) % message.length;
 }
 
-startBoard();
+scene.On("unity-loaded", startBoard);
