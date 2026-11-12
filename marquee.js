@@ -2,11 +2,11 @@
 const MESSAGE_URL   = "https://Elsk3r.github.io/my-board/message.txt";
 const LETTERS_SHOWN = 50;   // how many letters fit on the board at once
 const SPEED         = 150;  // smaller number = faster scrolling
-const TEXT_SIZE     = 1;    // bigger number = bigger letters
+const TEXT_SIZE     = 0.7;    // bigger number = bigger letters
 const BOARD_X       = 1.203;    // where the scrolling text sits in your world
 const BOARD_Y       = 1.785;
 const BOARD_Z       = 2.84;
-const TURN_AROUND   = 90;    // use 180 if the text faces the wrong way
+const TURN_AROUND   = 270;    // use 180 if the text faces the wrong way
 // ===== DO NOT CHANGE ANYTHING BELOW THIS LINE =====
 let message  = "Loading...   ***   ";
 let position = 0;
