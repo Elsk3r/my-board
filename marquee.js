@@ -6,7 +6,7 @@ const TEXT_SIZE     = 1;    // bigger number = bigger letters
 const BOARD_X       = 1.203;    // where the scrolling text sits in your world
 const BOARD_Y       = 1.785;
 const BOARD_Z       = 2.84;
-const TURN_AROUND   = 180;    // use 180 if the text faces the wrong way
+const TURN_AROUND   = 90;    // use 180 if the text faces the wrong way
 // ===== DO NOT CHANGE ANYTHING BELOW THIS LINE =====
 let message  = "Loading...   ***   ";
 let position = 0;
