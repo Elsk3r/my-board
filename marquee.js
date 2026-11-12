@@ -1,12 +1,12 @@
 // ===== CHANGE THESE (explained on the next page) =====
 const MESSAGE_URL   = "https://Elsk3r.github.io/my-board/message.txt";
-const LETTERS_SHOWN = 20;   // how many letters fit on the board at once
+const LETTERS_SHOWN = 50;   // how many letters fit on the board at once
 const SPEED         = 150;  // smaller number = faster scrolling
-const TEXT_SIZE     = 3;    // bigger number = bigger letters
-const BOARD_X       = 0;    // where the scrolling text sits in your world
-const BOARD_Y       = 2;
-const BOARD_Z       = 0;
-const TURN_AROUND   = 0;    // use 180 if the text faces the wrong way
+const TEXT_SIZE     = 0.7;    // bigger number = bigger letters
+const BOARD_X       = 1.203;    // where the scrolling text sits in your world
+const BOARD_Y       = 1.785;
+const BOARD_Z       = 2.84;
+const TURN_AROUND   = 270;    // use 180 if the text faces the wrong way
 // ===== DO NOT CHANGE ANYTHING BELOW THIS LINE =====
 let message  = "Loading...   ***   ";
 let position = 0;
@@ -21,7 +21,7 @@ async function startBoard() {
 
   board = await obj.AddComponent(new BS.BanterText(
     "", new BS.Vector4(1, 0.84, 0.3, 1), "Center", "Middle",
-    TEXT_SIZE, true, false, new BS.Vector2(5, 1)
+    TEXT_SIZE, true, false, new BS.Vector2(7.5, 0.3)
   ));
 
   getMessage();
