@@ -1,8 +1,8 @@
 // ===== CHANGE THESE (explained on the next page) =====
 const MESSAGE_URL   = "https://Elsk3r.github.io/my-board/message.txt";
-const LETTERS_SHOWN = 28;   // how many letters fit on the board at once
+const LETTERS_SHOWN = 20;   // how many letters fit on the board at once
 const SPEED         = 150;  // smaller number = faster scrolling
-const TEXT_SIZE     = 1;    // bigger number = bigger letters
+const TEXT_SIZE     = 3;    // bigger number = bigger letters
 const BOARD_X       = 0;    // where the scrolling text sits in your world
 const BOARD_Y       = 2;
 const BOARD_Z       = 0;
